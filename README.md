@@ -1,7 +1,7 @@
                       
 # Project Objective
 
-The focus of the project is to implement a hybrid algorithm (G.R.A.S.P.) that solves a single depot vehicle routing problem.
+The focus of this project is to implement a hybrid algorithm (G.R.A.S.P.) that solves a single depot vehicle routing problem.
 
 
 ## Introduction

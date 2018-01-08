@@ -1,45 +1,42 @@
                       
 # Project Objective
 
-The focus of this project is to implement a hybrid algorithm (G.R.A.S.P.) that solves a single depot vehicle routing problem.
-
+The focus of this project is to implement a hybrid Greedy Randomized Adaptive Search (GRASP) algorithm that solves a single depot vehicle routing problem.
 
 ## Introduction
 
 ### Vehicle Routing Problem
 
-The simplest Vehicle Routing Problem is stated as: Given a single depot and certain number vehicles, the problem is to meet the requirements of n number of customers. Each customer requires a certain quantity that is to be delivered from the depot. There are a fixed number of vehicles available and the capacity of the vehicle is known. The distances among the customer location as well as form the depot to location are known. The vehicle starts from the depot and return to depot after meeting the customer requirements. The problem is to deliver the quantities to the customers such that the vehicle used travel minimum total distance.
-The above problem is called a single depot vehicle depot problem. There are multiple depot vehicle depot problems, where the customers can be served from any depot.
+The simplest vehicle routing problem can be stated as: Given a single depot and a fixed number vehicles, each customer has a specific demand that is to be delivered from the depot. The capacity of the vehicles is known. The distances among the customer locations as well as from the depot to each customer location is known. The vehicle starts from the depot and return to depot after meeting the customer demands. The problem is to satisfy the demand of all customers such that the total distance travelled is minimized.
+The above problem is widely known as a single depot vehicle routing problem. 
 
-### Vehicle Routing Problem - Classification:
+### Vehicle Routing Problem - Variants:
 
 1. Vehicle Routing Problem with Pickup and Delivery (VRPPD): 
 A number of goods need to be moved from certain pickup locations to other delivery locations. The goal is to find optimal routes for a fleet of vehicles to visit the pickup and drop-off locations.
 2. Vehicle Routing Problem with LIFO :
- Similar to the VRPPD, except an additional restriction is placed on the loading of the vehicles: at any delivery location, the item being delivered must be the item most recently picked up. This scheme reduces the loading and unloading times at delivery locations because there is no need to temporarily unload items other than the ones that should be dropped off.
+Similar to the VRPPD, except an additional restriction is placed on the loading of the vehicles: at any delivery location, the item being delivered must be the item most recently picked up. This scheme reduces the loading and unloading times at delivery locations because there is no need to temporarily unload items other than the ones that should be dropped off.
 3. Vehicle Routing Problem with Time Windows (VRPTW): 
 The delivery locations have time windows within which the deliveries (or visits) must be made.
 4. Capacitated Vehicle Routing Problem (with or without Time Windows):
 CVRP or CVRPTW. The vehicles have limited carrying capacity of the goods that must be delivered.
 
-### Greedy Random Adaptive Search Procedure
+### Greedy Randomized Adaptive Search Procedure
 
-GRASP, a randomized adaptive search method is a constructive search methodology. The algorithm focuses on adding elements to a partial solution and make it complete. GRASP doest not perform any search operation, but they construct a single solution in an iterative fashion by evaluating all other solution elements, a.k.a. candidates and add according to there performance, i.e. insertion priority. The iteration continues as long as there is scope for improvement.
+GRASP, a randomized adaptive search method is a constructive search methodology.  GRASP constructs a solution in an iterative fashion by evaluating insertion priority of the candidate elements. 
 
-#### COMPONENTS
+#### Components
 
-GRASP begins every iteration with an empty solution set, adding elements by the iteration procedure in order to complete the solution. To explain, any iteration starts with an empty solution and evaluates all candidate elements according to a performance function (g) for their influence on the quality of the current list of partial solution. Those elements are sorted in decreasing order in so called restricted candidate list. From this set, a random element is chosen and added to the partial solution. Let us take brief look at each of the components.
+GRASP begins every iteration with an empty solution set, adding elements by the iteration procedure in order to complete the solution. To explain, any iteration starts with an empty solution and evaluates all candidate elements according to a performance function (g) for their influence on the quality of the current list of partial solution. The candidate elements are then sorted in decreasing order to make a restricted candidate list. From this set, a random element is chosen and added to the partial solution. Steps involved:
 
 1. Candidate evaluation
-Every candidate is evaluated using a function called candidate evaluation function (g). The change in the quality of partial solution by the addition of respective candidate element is what is taken into account.
+Every candidate is evaluated using a candidate evaluation function (g). The change in the quality of partial solution by the addition of respective candidate element is what is taken into account.
 2. Restricted candidate list construction
-R.C.L. construction can be carried out in two ways, viz. Cardinality based construction and Value based construction. The former method includes the k (fixed by the user) best candidates in the R.C.L., where k is the parameter. If k =1, the construction is purely greedy, and as k increases the randomness increases. In value based method a parameter a€ [0, 1] is employed for the R.C.L. construction. A threshold value which equals gmin + a (gmax-gmin) is calculated. All elements which is below or above the threshold value is included in the list (for minimization and maximization problem respectively). 
+R.C.L. construction can be carried out in two ways: cardinality based construction and value based construction. The former method includes the k (fixed by the user) best candidates in the R.C.L., where k is the parameter. If k =1, the construction is purely greedy, and as k increases the randomness increases. In value based method a parameter a€ [0, 1] is employed for the R.C.L. construction. A threshold value which equals gmin + a (gmax-gmin) is calculated. All elements which is below or above the threshold value is included in the list (for minimization and maximization problem respectively). 
 3. Random element chooser
  An element from the list is chosen randomly.
 
 #### Basic Algorithm
-
-The problem has been solved using GRASP algorithm with cardinal based restricted candidate list creation. 
 
 '''
 Data: set V containing customers and depot

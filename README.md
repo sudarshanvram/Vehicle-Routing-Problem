@@ -38,7 +38,7 @@ R.C.L. construction can be carried out in two ways: cardinality based constructi
 
 #### Basic Algorithm
 
-'''
+```
 Data: set V containing customers and depot
 Data: cost matrix D
 Result: set of routes R
@@ -58,7 +58,7 @@ if f(s)< f(sbest) then
 sbest = s;
 end
 end
-'''
+```
 
 #### Solution Improvement
 
